@@ -1,6 +1,8 @@
 .SearchResults {
   .main {
+    position: fixed;
     background-color: #eee;
-    width: 80px;
+    width: 100%;
+    height: 100%;
   }
 }
