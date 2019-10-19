@@ -1,21 +1,14 @@
-# Simple Universal React Redux
+# Frontend for Mercadolibre
 
-### The simplest possible Async Universal React & Redux boilerplate.
+### Cosas que se tuvieron en cuenta al hacer este esta app
 
-This repo is an attempt to make the simplest server-side rendered (universal) async React Redux app.
+1. SSR: Es escencial para el SEO ya que los buscadores recién se estan adaptando a crawlear sitios con render solo en el cliente y no es del todo fiable.
+2. Hot reloading en dev para que se vea al instante el cambio de un archivo, ya que agiliza mucho el desarrollo.
+3. Minificado de html cuando se buildea en prod.
+4. Mobile first.
+5. CSS critico above the fold.
 
-Boilerplates can be a great for two things:
-
-1. Get started with your application code quickly since you don't have to scaffold your app.
-1. Learn how apps can be scaffolded, and learn how technologies can fit together.
-
-This repository is more aimed at the second point.
-
-It was born out of frustrations with complex boilerplates where you can't understand what is going on behind the scenes. Developers tend to want to know how things work under the hood. This repo offers a boiled-down example to be tweaked and hacked around with.
-
-It tries to be as un-opinionated and simple as possible.
-
-It borrows heavily from the documentation of [Redux](https://redux.js.org/) and [React-Router](https://reacttraining.com/react-router/web).
+### Este repo se creo en base a este boilerplate https://github.com/william-woodhead/simple-universal-react-redux ya que al tener visibilidad de varias personas en la comunidad esta mas depurado que uno que creemos nosotros mismos y si ocurre algun error en el futuro posiblemente este reportado alli tambien. Solo hay que tener en cuenta que aqui se actualizaron todas las librerias a la ultima version stable.
 
 ### These are the technologies it uses:
 
@@ -40,42 +33,30 @@ It borrows heavily from the documentation of [Redux](https://redux.js.org/) and 
 ###### Install
 
 ```bash
-yarn install
+npm install
 ```
 
-###### Develop
+###### Run in development
 
 ```bash
-yarn run dev
+npm run dev
 ```
 
 Open [localhost:3000](http://localhost:3000)
 
-###### Build for production
+###### Make build
 
 ```bash
-yarn run build
+npm run build
 ```
 
 ###### Run in production
 
 ```bash
-yarn run start
+npm run start
 ```
 
 Open [localhost:3000](http://localhost:3000)
-
-## Platform
-
-This repo is developed and tested on Mac OS with **node v10.10.0** and **npm v6.7.0**
-
-#### Windows
-
-This repo is tested on Windows. You might have to install nodemon globally though.
-
-```bash
-npm i -g nodemon
-```
 
 ## Documentation
 
@@ -143,23 +124,3 @@ The difference in the react tree between server side and client side is as follo
 ```
 
 Everything else in the entire React tree is the same between server and client.
-
-## Contributing
-
-Any issues, reports, feedback or bugs or pull requests are more than welcome.
-
-However it is worth mentioning that the purpose of this repo is to create the **simplest**, **most up-to-date**, **most robust** universal async react redux boilerplate.
-
-Therefore any pull request should aim to simplify, fix or update the current solution, not add new packages or complexity.
-
-## License
-
-MIT License
-
-Copyright (c) 2019 William Woodhead
-
-## Have a play around
-
-Good luck with it!
-Please star or follow on twitter:
-[@williamwoodhead](https://twitter.com/williamwoodhead)

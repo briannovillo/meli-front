@@ -1,6 +1,6 @@
-import TYPE from '../../types/about';
+import TYPE from '../../types/search';
 
-export default function getData() {
+export default function search() {
   return (dispatch) => {
     dispatch({ type: TYPE.REQ_DATA });
 

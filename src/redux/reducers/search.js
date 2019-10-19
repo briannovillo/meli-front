@@ -1,4 +1,4 @@
-import TYPE from '../types/about';
+import TYPE from '../types/search';
 
 export default function (state = null, action) {
   switch (action.type) {

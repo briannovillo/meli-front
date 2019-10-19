@@ -1,6 +1,6 @@
 import prefixer from './prefixer';
 
-const prefix = '@@aboutTypes';
+const prefix = '@@searchTypes';
 
 const types = {
   REQ_DATA: null,

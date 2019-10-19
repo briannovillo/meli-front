@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import styles from './About.scss';
+import queryString from 'query-string';
+import styles from './SearchResults.scss';
 
-export default class About extends Component {
+export default class SearchResults extends Component {
   componentDidMount() {
     // only fetch the data if there is no data
     if (!this.props.data) this.props.getData();
   }
 
   render() {
+    console.log(queryString.parse(this.props.location.search));
     const { data } = this.props;
     if (!data) return 'Loading async data...';
 
@@ -21,13 +23,13 @@ export default class About extends Component {
   }
 }
 
-About.propTypes = {
+SearchResults.propTypes = {
   data: PropTypes.shape({
     text: PropTypes.string
   }),
   getData: PropTypes.func.isRequired
 };
 
-About.defaultProps = {
+SearchResults.defaultProps = {
   data: null
 };

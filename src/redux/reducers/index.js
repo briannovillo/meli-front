@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import home from './home';
-import about from './about';
+import search from './search';
 
 const reduxState = combineReducers({
-  home,
-  about
+  search
 });
 
 export default reduxState;

@@ -8,10 +8,6 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.App}>
-        <div className={styles.TopBar}>
-          <Link className={styles.Link} to="/">Home</Link>
-          <Link className={styles.Link} to="/about">About</Link>
-        </div>
         {this.props.children}
         <div className={styles.Footer}>William Woodhead - MIT License</div>
       </div>
