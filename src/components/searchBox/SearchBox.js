@@ -5,7 +5,7 @@ import styles from './SearchBox.scss';
 export default class SearchBox extends Component {
   render() {
     return (
-      <header className={styles['nav-header']}>
+      <header role="banner" className={styles['nav-header']}>
         <div className={styles['nav-menu']}>
           <Link className={styles['nav-logo']} to="/">
             Mercado Libre Argentina - Donde comprar y vender de todo
@@ -15,4 +15,4 @@ export default class SearchBox extends Component {
       </header>
     );
   }
-};
+}

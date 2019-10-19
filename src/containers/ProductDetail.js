@@ -1,16 +1,21 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import NotFound from '../components/not-found';
+import ProductDetail from '../components/productDetail';
+import { search } from '../redux/actions/searchResults';
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
-}
+  return {
+    data: state.product
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return bindActionCreators({}, dispatch);
-}
+  return bindActionCreators({
+    getData: search
+  }, dispatch);
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NotFound);
+)(ProductDetail);

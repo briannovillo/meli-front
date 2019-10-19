@@ -1,40 +1,37 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import queryString from 'query-string';
 import SearchBox from '../searchBox/SearchBox';
-import styles from './SearchResults.scss';
+import styles from './ProductDetail.scss';
 
-export default class SearchResults extends Component {
+export default class ProductDetail extends Component {
   componentDidMount() {
     // only fetch the data if there is no data
     if (!this.props.data) this.props.getData();
   }
 
   render() {
-    console.log(queryString.parse(this.props.location.search));
+    console.log(this.props.match.params.id);
+    
     const { data } = this.props;
     if (!data) return 'Loading async data...';
 
     return (
-      <div className={styles.SearchResults}>
+      <div className={styles.About}>
         <SearchBox />
-        <main role="main" className={styles.main}>
-          <ol>
-
-          </ol>
-        </main>
+        <h1>ProductDetail page</h1>
+        <p>Async Text:  {data.text}</p>
       </div>
     );
   }
 }
 
-SearchResults.propTypes = {
+ProductDetail.propTypes = {
   data: PropTypes.shape({
     text: PropTypes.string
   }),
   getData: PropTypes.func.isRequired
 };
 
-SearchResults.defaultProps = {
+ProductDetail.defaultProps = {
   data: null
 };
