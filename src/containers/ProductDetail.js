@@ -5,7 +5,7 @@ import { search } from '../redux/actions/searchResults';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    data: state.product
+    data: state.search
   };
 };
 
