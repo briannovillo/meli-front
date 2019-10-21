@@ -1,4 +1,4 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import {
   productGetFetched,
   productGetFetchFailed,
@@ -37,6 +37,6 @@ export function* searchProduct(action) {
 }
 
 export const productSaga = [
-  takeEvery(PRODUCT_GET_FETCHING, getProduct),
-  takeEvery(PRODUCT_SEARCH_FETCHING, searchProduct),
+  takeLatest(PRODUCT_GET_FETCHING, getProduct),
+  takeLatest(PRODUCT_SEARCH_FETCHING, searchProduct),
 ];

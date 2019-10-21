@@ -3,24 +3,36 @@ import React, { Component } from 'react';
 import SearchBox from '../searchBox/SearchBox';
 import styles from './ProductDetail.scss';
 
+const currencySymbols = new Map([
+  ['ARS', '$'],
+  ['USD', 'U$S']
+]);
+
 export default class ProductDetail extends Component {
-
-  UNSAFE_componentWillMount() {
-    console.log(this.props);
-
-    if (!this.props.product) {
-      this.props.productGetFetch(this.props.match.params.id);
-    }
-  }
-
   render() {
-    const { product } = this.props;
+    const { 
+      product: {
+        description,
+        title,
+        condition,
+        picture,
+        sold_quantity: soldQuantity,
+        price
+      }
+    } = this.props;
 
     return (
       <div className={styles.ProductDetail}>
         <SearchBox />
-        <h1>ProductDetail page</h1>
-        <p>Async Text: {product.title}</p>
+        <img src={picture} alt={title} />
+        <h2>Descripción del producto</h2>
+        <p>{description}</p>
+        <h1>{title}</h1>
+        <span>{condition}</span>
+        { soldQuantity ? <span>{soldQuantity} vendidos</span> : '' }
+        <span>{ currencySymbols.get(price.currency) }</span>
+        <span>{ price.amount }</span>
+        <button type="button">Comprar</button>
       </div>
     );
   }
@@ -28,9 +40,18 @@ export default class ProductDetail extends Component {
 
 ProductDetail.propTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string
-  }),
-  productGetFetch: PropTypes.func.isRequired
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      currency: PropTypes.string,
+      amount: PropTypes.number,
+      decimals: PropTypes.number
+    }).isRequired,
+    picture: PropTypes.string,
+    condition: PropTypes.string,
+    sold_quantity: PropTypes.string,
+    description: PropTypes.string
+  })
 };
 
 ProductDetail.defaultProps = {

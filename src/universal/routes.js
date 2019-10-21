@@ -7,6 +7,7 @@ import App from '../containers/App';
 import SearchBox from '../containers/SearchBox';
 import SearchResults from '../containers/SearchResults';
 import ProductDetail from '../containers/ProductDetail';
+import NotFound from '../containers/NotFound';
 import ProductApi from '../redux/services/modules/product';
 
 /**
@@ -67,7 +68,7 @@ export default function Router() {
     <App>
       <Switch>
         { routes.map(route => <Route key={route.path} {...route} />) }
-        <Route component={SearchBox} />
+        <Route component={NotFound} />
       </Switch>
     </App>
   );

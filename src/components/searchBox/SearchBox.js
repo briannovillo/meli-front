@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './SearchBox.scss';
 
 export default class SearchBox extends Component {
@@ -7,9 +6,9 @@ export default class SearchBox extends Component {
     return (
       <header role="banner" className={styles['nav-header']}>
         <div className={styles['nav-menu']}>
-          <Link className={styles['nav-logo']} to="/">
+          <a href="/" className={styles['nav-logo']}>
             Mercado Libre Argentina - Donde comprar y vender de todo
-          </Link>
+          </a>
           <input className={styles['nav-search-input']} placeholder="Nunca dejes de buscar" />
         </div>
       </header>

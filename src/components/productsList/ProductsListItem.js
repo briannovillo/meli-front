@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Product.scss';
+import styles from './ProductsListItem.scss';
 
 const currencySymbols = new Map([
   ['ARS', '$'],
   ['USD', 'U$S']
 ]);
 
-export default class Product extends Component {
+export default class ProductsListItem extends Component {
   render() {
     const {
       id,
@@ -22,29 +21,29 @@ export default class Product extends Component {
 
     return (
       <li className={styles.product}>
-        <Link to={detailLink}>
+        <a href={detailLink}>
           <img src={picture} alt={title} />
-        </Link>
-        <Link to={detailLink}>
+        </a>
+        <a href={detailLink}>
           <span className={styles.symbol}>
             { currencySymbols.get(price.currency) }
           </span>
           <span className={styles.fraction}>
             { price.amount }
           </span>
-        </Link>
-        <Link to={detailLink}>
+        </a>
+        <a href={detailLink}>
           <h2 className={styles.title}>
             {title}
           </h2>
-        </Link>
+        </a>
         <p>{description}</p>
       </li>
     );
   }
 }
 
-Product.propTypes = {
+ProductsListItem.propTypes = {
   id: PropTypes.string.isRequired,
   price: PropTypes.shape(
     {
@@ -58,7 +57,7 @@ Product.propTypes = {
   picture: PropTypes.string
 };
 
-Product.defaultProps = {
+ProductsListItem.defaultProps = {
   description: '',
   picture: ''
 };
