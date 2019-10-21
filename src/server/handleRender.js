@@ -8,35 +8,38 @@ import createReduxStore from '../universal/createReduxStore';
 import renderFullPage from './renderFullPage';
 
 export default function handleRender(req, res) {
-  const promises = [];
+  const promisesForSSR = [];
 
   // Create a new Redux store instance for every request
   const store = createReduxStore();
 
-  let matchedRoute;
-  // use `some` to imitate `<Switch>` behavior of selecting only the first to match
-  routes.some((route) => {
-    const match = matchPath(req.path, route);
-    if (match) matchedRoute = match;
-    if (match && route.loadData) promises.push(route.loadData(store, req.url));
-    return matchedRoute;
-  });
+  // Use `some` to imitate `<Switch>` behavior of selecting only the first to match
+  const matchedRoute = routes.some(
+    (route) => {
+      const match = matchPath(req.path, route);
+      /**
+       * If matched route has a loadData function,
+       * put them in array of required promises before render page
+       */
+      if (match && route.loadData) promisesForSSR.push(route.loadData(store, req.url));
+      return match;
+    }
+  );
 
-  return Promise.all(promises).then(
+  return Promise.all(promisesForSSR).then(
     () => {
-      // This context object contains the results of the render
       const html = renderToString(
         <Provider store={store}>
-          <StaticRouter location={req.url} context={{}}>
+          <StaticRouter location={req.url}>
             <Router />
           </StaticRouter>
         </Provider>
       );
 
-      // get the preloaded state from the redux store
+      // Get the preloaded state from the redux store for inject into initial html
       const preloadedState = store.getState();
 
-      // send a code based on whether the route matched or was not found
+      // Send a code based on whether the route matched or was not found
       return res
         .status(matchedRoute && matchedRoute.isExact ? 200 : 404)
         .send(renderFullPage(html, preloadedState));

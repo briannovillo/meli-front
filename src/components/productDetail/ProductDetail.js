@@ -15,9 +15,6 @@ export default class ProductDetail extends Component {
 
   render() {
     const { product } = this.props;
-    if (!product) return 'Loading async data...';
-
-    console.log(product);
 
     return (
       <div className={styles.ProductDetail}>
