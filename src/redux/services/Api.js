@@ -1,5 +1,4 @@
-import fetch from "isomorphic-fetch";
-import "es6-promise";
+import fetch from 'isomorphic-fetch';
 
 class Api {
   call(url, options) {
