@@ -3,6 +3,7 @@
   "env": {
     "server": {
       "plugins": [
+        ["transform-regenerator"],
         [
           "css-modules-transform",
           {

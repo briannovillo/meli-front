@@ -3,7 +3,6 @@ import fetch from 'node-fetch';
 class Api {
   call(url, options) {
     let success = false;
-
     return fetch(url, options)
       .then(response => {
         success = response.ok;
@@ -11,9 +10,8 @@ class Api {
       })
       .then(data => {
         if (!success) {
-          throw new Error(`${data.code} ${data.message}`);
+          throw new Error(`${data.code} ${data.error}`);
         }
-
         return data;
       });
   }

@@ -3,7 +3,7 @@ module.exports = {
   watch: true,
   devtool: 'inline-source-map',
   entry: {
-    main: ['./src/client/index.js']
+    main: ['babel-polyfill', './src/client/index.js']
   },
   output: {
     publicPath: '/dist/',

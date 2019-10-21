@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Router from '../universal/routes';
 import createReduxStore from '../universal/createReduxStore';
+import rootSaga from '../redux/sagas/index';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.__PRELOADED_STATE__; // eslint-disable-line no-underscore-dangle
@@ -13,6 +14,8 @@ delete window.__PRELOADED_STATE__; // eslint-disable-line no-underscore-dangle
 
 // Create Redux store with initial state
 const store = createReduxStore({ preloadedState });
+
+store.runSaga(rootSaga);
 
 hydrate(
   <Provider store={store}>

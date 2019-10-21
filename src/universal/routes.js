@@ -12,7 +12,7 @@ export const routes = [
   {
     path: '/',
     exact: true,
-    component: SearchBox,
+    component: SearchBox
   },
   {
     path: '/items',
