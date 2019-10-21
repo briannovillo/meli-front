@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import search from './search';
+import product from './modules/product';
 
-const reduxState = combineReducers({
-  search
+export default combineReducers({
+  product
 });
-
-export default reduxState;

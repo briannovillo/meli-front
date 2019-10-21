@@ -15,6 +15,9 @@ export default class Breadcrumb extends Component {
 
 Breadcrumb.propTypes = {
   paths: PropTypes.arrayOf(
-    PropTypes.string
+    PropTypes.shape({
+      url: PropTypes.string,
+      text: PropTypes.string
+    })
   ).isRequired
 };

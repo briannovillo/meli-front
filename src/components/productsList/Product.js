@@ -10,13 +10,20 @@ const currencySymbols = new Map([
 
 export default class Product extends Component {
   render() {
-    const { id, price, title, description, picture } = this.props;
+    const {
+      id,
+      price,
+      title,
+      description,
+      picture
+    } = this.props;
+
     const detailLink = `/items/${id}`;
 
     return (
       <li className={styles.product}>
         <Link to={detailLink}>
-          <img src={picture} /*alt={product.title}*/ />
+          <img src={picture} alt={title} />
         </Link>
         <Link to={detailLink}>
           <span className={styles.symbol}>

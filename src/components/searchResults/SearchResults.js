@@ -7,50 +7,24 @@ import ProductsList from '../productsList';
 import styles from './SearchResults.scss';
 
 export default class SearchResults extends Component {
-  componentDidMount() {
-    // only fetch the data if there is no data
-    if (!this.props.data) this.props.getData();
+
+  UNSAFE_componentWillMount() {
+    if (!this.props.products) {
+      this.props.productSearchFetch(queryString.parse(this.props.location.search).search);
+    }
   }
 
   render() {
-    console.log(queryString.parse(this.props.location.search));
-    const { data } = this.props;
-    if (!data) return 'Loading async data...';
+    const { products } = this.props;
+    console.log(this.props);
+    if (!products) return 'Loading async data...';
 
     return (
       <div className={styles.SearchResults}>
         <SearchBox />
         <main role="main" className={styles.main}>
-          <BreadCrumb paths={['Algo', 'Otra cosa', 'La ultima']} />
-          <ProductsList products={
-            [
-              {
-                id: 'MLA812667656',
-                title: 'Ford Focus Iii 1.6 S 2017 Rpm Moviles',
-                price: {
-                  currency: 'ARS',
-                  amount: 580000,
-                  decimals: 0
-                },
-                picture: 'http://mla-s1-p.mlstatic.com/676653-MLA32057302445_092019-I.jpg',
-                condition: 'used',
-                free_shipping: false
-              },
-              {
-                id: 'MLA819095589',
-                title: 'Ford Focus 1.6 Trend Exe Plus Manual 4p 2010 Rpm Moviles',
-                price: {
-                  currency: 'ARS',
-                  amount: 319000,
-                  decimals: 0
-                },
-                picture: 'http://mla-s2-p.mlstatic.com/975700-MLA32242010722_092019-I.jpg',
-                condition: 'used',
-                free_shipping: true
-              }
-            ]
-          }
-          />
+          <BreadCrumb />
+          <ProductsList products={products} />
         </main>
       </div>
     );
@@ -58,12 +32,14 @@ export default class SearchResults extends Component {
 }
 
 SearchResults.propTypes = {
-  data: PropTypes.shape({
-    text: PropTypes.string
-  }),
-  getData: PropTypes.func.isRequired
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string
+    })
+  ),
+  productSearchFetch: PropTypes.func.isRequired
 };
 
 SearchResults.defaultProps = {
-  data: null
+  products: null
 };

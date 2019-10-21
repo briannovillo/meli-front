@@ -4,7 +4,6 @@ import App from '../containers/App';
 import SearchBox from '../containers/SearchBox';
 import SearchResults from '../containers/SearchResults';
 import ProductDetail from '../containers/ProductDetail';
-import { search } from '../redux/actions/searchResults';
 
 // for more details see https://reacttraining.com/react-router/web/guides/server-rendering
 // specify routes with the asnyc function required to fetch the data to render the route
@@ -18,14 +17,12 @@ export const routes = [
   {
     path: '/items',
     exact: true,
-    component: SearchResults,
-    loadData: () => search()
+    component: SearchResults
   },
   {
     path: '/items/:id',
     exact: true,
-    component: ProductDetail,
-    loadData: () => search()
+    component: ProductDetail
   }
 ];
 

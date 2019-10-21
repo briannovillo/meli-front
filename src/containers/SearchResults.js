@@ -1,17 +1,17 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SearchResults from '../components/searchResults';
-import { search } from '../redux/actions/searchResults';
+import { productSearchFetch } from '../redux/reducers/modules/product';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    data: state.search
+    products: state.product.products
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getData: search
+    productSearchFetch
   }, dispatch);
 };
 
