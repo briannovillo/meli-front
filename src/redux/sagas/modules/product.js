@@ -11,7 +11,6 @@ import ProductApi from '../../services/modules/product';
 
 export function* getProduct(action) {
   try {
-    console.log("viene al get", action.payload.id);
     const response = yield ProductApi.get(action.payload.id);
 
     if (!response.item) {

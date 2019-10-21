@@ -1,15 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import createSagaMiddleware, { END } from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../redux/reducers';
 
-const loggerMiddleware = createLogger();
 const sagaMiddleware = createSagaMiddleware();
 
 export default function createReduxStore({ preloadedState, server } = {}) {
   let enhancer;
 
   if (process.env.NODE_ENV !== 'production' && !server) {
+    // Enable redux-logger and redux-devtools on dev environments for debugging each state steps
+    const loggerMiddleware = createLogger();
     const withReduxDevtools = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
     enhancer = withReduxDevtools(applyMiddleware(sagaMiddleware, loggerMiddleware));
   } else {
@@ -19,10 +20,6 @@ export default function createReduxStore({ preloadedState, server } = {}) {
   const store = createStore(rootReducer, preloadedState, enhancer);
 
   store.runSaga = sagaMiddleware.run;
-
-  store.close = () => {
-    store.dispatch(END);
-  };
 
   return store;
 }

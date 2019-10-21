@@ -9,7 +9,6 @@ const productConfig = {
 
 class ProductApi extends Api {
   get(id) {
-    console.log(id);
     if (!id) {
       throw new Error('Parameter id cannot be empty');
     }
