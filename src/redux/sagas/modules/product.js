@@ -16,7 +16,7 @@ export function* getProduct(action) {
     if (!response.item) {
       yield put(productGetFetchFailed(response.error, response.code));
     } else {
-      yield put(productGetFetched(response.item));
+      yield put(productGetFetched(response.item, response.categories));
     }
   } catch (e) {
     yield put(productGetFetchFailed(e.message, 500));
@@ -29,7 +29,7 @@ export function* searchProduct(action) {
     if (!response.items) {
       yield put(productSearchFetchFailed(response.error, response.code));
     } else {
-      yield put(productSearchFetched(response.items));
+      yield put(productSearchFetched(response.items, response.categories));
     }
   } catch (e) {
     yield put(productSearchFetchFailed(e.message, 500));

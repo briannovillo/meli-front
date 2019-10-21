@@ -5,10 +5,6 @@ const initialState = {
   errorMessage: null,
   errorCode: null,
   breadcrumb: [
-    { text: 'Algo' },
-    { text: 'Una mas' },
-    { text: 'Otra mas' },
-    { text: 'La ultima' }
   ]
 };
 
@@ -57,11 +53,12 @@ export function productSearchFetch(query) {
   };
 }
 
-export function productSearchFetched(products) {
+export function productSearchFetched(products, categories) {
   return {
     type: PRODUCT_SEARCH_FETCHED,
     payload: {
-      products
+      products,
+      categories
     }
   };
 }
@@ -100,7 +97,8 @@ export default (state = initialState, action = {}) => {
         product: null,
         products: action.payload.products,
         errorMessage: null,
-        errorCode: null
+        errorCode: null,
+        breadcrumb: action.payload.categories
       };
     case PRODUCT_SEARCH_FETCH_FAILED:
     case PRODUCT_GET_FETCH_FAILED:

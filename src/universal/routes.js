@@ -37,7 +37,8 @@ export const routes = [
         store.dispatch({
           type: 'PRODUCT_SEARCH_FETCHED',
           payload: {
-            products: data.items
+            products: data.items,
+            categories: data.categories
           }
         })
       );
@@ -54,7 +55,8 @@ export const routes = [
         store.dispatch({
           type: 'PRODUCT_GET_FETCHED',
           payload: {
-            product: data.item
+            product: data.item,
+            categories: data.categories
           }
         })
       );

@@ -3,7 +3,7 @@ import Breadcrumb from '../components/breadcrumb';
 
 const mapStateToProps = (state) => {
   return {
-    paths: ['Algo']
+    paths: state.product.breadcrumb
   };
 };
 
