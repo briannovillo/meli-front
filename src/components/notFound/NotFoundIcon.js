@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Icon = () => (
+const NotFoundIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="251" height="154" viewBox="0 0 251 154" data-reactid="8">
     <g fill="none" fillRule="evenodd" data-reactid="9">
         <path fill="#CCC" d="M18 151h233v2H18v-2zm-18 0h13v2H0v-2z" data-reactid="10"></path>
@@ -23,4 +23,4 @@ const Icon = () => (
   </svg>
 );
 
-export default Icon;
+export default NotFoundIcon;

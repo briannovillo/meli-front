@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ProductDetail from '../components/productDetail';
 import { productGetFetch } from '../redux/reducers/modules/product';
@@ -9,10 +8,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    productGetFetch
-  }, dispatch);
+const mapDispatchToProps = {
+  productGetFetch
 };
 
 export default connect(

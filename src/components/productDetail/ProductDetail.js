@@ -49,7 +49,7 @@ ProductDetail.propTypes = {
     }).isRequired,
     picture: PropTypes.string,
     condition: PropTypes.string,
-    sold_quantity: PropTypes.string,
+    sold_quantity: PropTypes.number,
     description: PropTypes.string
   })
 };

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import SearchBox from '../searchBox';
+import SearchBox from '../../containers/SearchBox';
 import BreadCrumb from '../../containers/BreadCrumb';
 import ProductsList from '../productsList';
 import styles from './SearchResults.scss';
