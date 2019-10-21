@@ -3,8 +3,7 @@ import Api from '../Api';
 const productConfig = {
   host: 'https://xcemt4j6ui.execute-api.us-east-1.amazonaws.com',
   productGetEndpoint: '/prd/api/items/',
-  productSearchEndpoint: '/prd/api/items/',
-  userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
+  productSearchEndpoint: '/prd/api/items/'
 };
 
 class ProductApi extends Api {
@@ -14,8 +13,7 @@ class ProductApi extends Api {
     }
     const url = `${productConfig.host}${productConfig.productGetEndpoint}${id}`;
     const options = {
-      method: 'GET',
-      headers: { 'User-Agent': productConfig.userAgent }
+      method: 'GET'
     };
     return this.call(url, options);
   }
@@ -26,8 +24,7 @@ class ProductApi extends Api {
     }
     const url = `${productConfig.host}${productConfig.productSearchEndpoint}?q=${query}`;
     const options = {
-      method: 'GET',
-      headers: { 'User-Agent': productConfig.userAgent }
+      method: 'GET'
     };
     return this.call(url, options);
   }

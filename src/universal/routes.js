@@ -64,7 +64,7 @@ export const routes = [
   }
 ];
 
-// If specified path don't match with routes, render SearchBox
+// If specified path don't match with routes, render NotFound
 export default function Router() {
   return (
     <App>

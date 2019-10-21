@@ -24,9 +24,9 @@ export default class SearchBox extends Component {
   render() {
     const { value } = this.state;
     return (
-      <header role="banner" className={styles['nav-header']}>
-        <form onSubmit={this.handleSubmit} className={styles['nav-menu']}>
-          <a href="/" className={styles['nav-logo']}>
+      <header role="banner" className={styles.header}>
+        <form onSubmit={this.handleSubmit} className={styles.menu}>
+          <a href="/" className={styles.logo}>
             Mercado Libre Argentina - Donde comprar y vender de todo
           </a>
           <input
@@ -34,7 +34,7 @@ export default class SearchBox extends Component {
             onChange={this.handleChange}
             type="text"
             name="query"
-            className={styles['nav-search-input']}
+            className={styles.input}
             placeholder="Nunca dejes de buscar"
           />
           <SearchButton />

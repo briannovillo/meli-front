@@ -4,8 +4,7 @@ const initialState = {
   products: null,
   errorMessage: null,
   errorCode: null,
-  breadcrumb: [
-  ]
+  breadcrumb: []
 };
 
 export const PRODUCT_GET_FETCHING = 'PRODUCT_GET_FETCHING';

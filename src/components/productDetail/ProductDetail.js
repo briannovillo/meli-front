@@ -29,7 +29,7 @@ export default class ProductDetail extends Component {
         <p>{description}</p>
         <h1>{title}</h1>
         <span>{condition}</span>
-        { soldQuantity ? <span>{soldQuantity} vendidos</span> : '' }
+        { soldQuantity ? <span>{`${soldQuantity} vendidos`}</span> : '' }
         <span>{ currencySymbols.get(price.currency) }</span>
         <span>{ price.amount }</span>
         <button type="button">Comprar</button>

@@ -1,12 +1,12 @@
-.nav-header {
+.header {
   background-color: #fff159;
   width: 100%;
   height: 40px;
-  .nav-menu {
+  .menu {
     margin: auto;
     width: 80%;
   }
-  .nav-logo {
+  .logo {
     background-image: url(https://http2.mlstatic.com/ui/navigation/5.3.3/mercadolibre/logo__small.png);
     text-indent: -999px;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
     margin-top: 6px;
     height: 28px;
   }
-  .nav-search-input {
+  .input {
     margin-top: 5px;
     margin-left: 60px;
     width: 85%;
@@ -23,3 +23,4 @@
     padding-left: 5px;
   }
 }
+

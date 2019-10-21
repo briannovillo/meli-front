@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import SearchResults from '../components/searchResults';
-import { productSearchFetch } from '../redux/reducers/modules/product';
 
 const mapStateToProps = (state) => {
   return {
@@ -8,11 +7,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  productSearchFetch
-};
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(SearchResults);

@@ -12,9 +12,8 @@ import ProductApi from '../../services/modules/product';
 export function* getProduct(action) {
   try {
     const response = yield ProductApi.get(action.payload.id);
-
     if (!response.item) {
-      yield put(productGetFetchFailed(response.error, response.code));
+      yield put(productGetFetchFailed(response.message, response.code));
     } else {
       yield put(productGetFetched(response.item, response.categories));
     }
@@ -27,7 +26,7 @@ export function* searchProduct(action) {
   try {
     const response = yield ProductApi.search(action.payload.query);
     if (!response.items) {
-      yield put(productSearchFetchFailed(response.error, response.code));
+      yield put(productSearchFetchFailed(response.message, response.code));
     } else {
       yield put(productSearchFetched(response.items, response.categories));
     }

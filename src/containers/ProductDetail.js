@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import ProductDetail from '../components/productDetail';
-import { productGetFetch } from '../redux/reducers/modules/product';
 
 const mapStateToProps = (state) => {
   return {
@@ -8,11 +7,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  productGetFetch
-};
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(ProductDetail);
