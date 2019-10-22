@@ -46,6 +46,7 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-css-modules-transform": "^1.6.2",
     "concurrently": "^4.1.0",
+    "copy-webpack-plugin": "^5.0.4",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.12.1",
