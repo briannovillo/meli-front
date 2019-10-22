@@ -36,8 +36,7 @@ export default class ProductDetail extends Component {
               { soldQuantity ? <span className={styles.sold}>{` - ${soldQuantity} vendidos`}</span> : '' }
               <h1>{title}</h1>
               <span className={styles.currency}>{ currencySymbols.get(price.currency) }</span>
-              <span className={styles.amount}>{ price.amount }</span>
-              <span className={styles.decimals}>{ price.decimals }</span>
+              <span className={styles.amount}>{ price.amount.toFixed(2) }</span>
               <button className={styles.buy} type="button">Comprar</button>
             </div>
           </div>
