@@ -24,11 +24,12 @@ export function productGetFetch(id) {
   };
 }
 
-export function productGetFetched(product) {
+export function productGetFetched(product, categories) {
   return {
     type: PRODUCT_GET_FETCHED,
     payload: {
-      product
+      product,
+      categories
     }
   };
 }
@@ -87,7 +88,8 @@ export default (state = initialState, action = {}) => {
         product: action.payload.product,
         products: null,
         errorMessage: null,
-        errorCode: null
+        errorCode: null,
+        breadcrumb: action.payload.categories
       };
     case PRODUCT_SEARCH_FETCHED:
       return {

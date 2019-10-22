@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SearchBox from '../searchBox/SearchBox';
+import BreadCrumb from '../../containers/BreadCrumb';
 import styles from './ProductDetail.scss';
 
 const currencySymbols = new Map([
@@ -24,6 +25,7 @@ export default class ProductDetail extends Component {
     return (
       <React.Fragment>
         <SearchBox />
+        <BreadCrumb />
         <div className={styles.ProductDetail}>
           <div className={styles.overlay}>
             <div className={styles.left}>
