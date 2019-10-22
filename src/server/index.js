@@ -1,8 +1,9 @@
 import Express from 'express';
+import config from '../config/default';
 import handleRender from './handleRender';
 
 const app = Express();
-const port = process.env.PORT || 3000;
+const { port } = config.server;
 
 // Set server static folder
 app.use('/dist', Express.static('dist'));

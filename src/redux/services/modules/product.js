@@ -1,9 +1,10 @@
+import config from '../../../config/default';
 import Api from '../Api';
 
 const productConfig = {
-  host: 'https://xcemt4j6ui.execute-api.us-east-1.amazonaws.com',
-  productGetEndpoint: '/prd/api/items/',
-  productSearchEndpoint: '/prd/api/items/'
+  host: config.services.product.host,
+  productGetEndpoint: config.services.product.getEndpoint,
+  productSearchEndpoint: config.services.product.searchEndpoint
 };
 
 class ProductApi extends Api {

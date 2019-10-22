@@ -1,0 +1,12 @@
+{
+    "server": {
+        "port": 3000
+    },
+    "services": {
+        "product": {
+            "host": "https://xcemt4j6ui.execute-api.us-east-1.amazonaws.com",
+            "getEndpoint": "/prd/api/items/",
+            "searchEndpoint": "/prd/api/items/"
+        }
+    }
+}
