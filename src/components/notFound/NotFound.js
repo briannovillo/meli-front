@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchBox from '../searchBox';
+import SearchBox from '../searchBox/SearchBox';
 import styles from './NotFound.scss';
 import NotFoundIcon from './NotFoundIcon';
 

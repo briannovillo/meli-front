@@ -22,18 +22,27 @@ export default class ProductDetail extends Component {
     } = this.props;
 
     return (
-      <div className={styles.ProductDetail}>
+      <React.Fragment>
         <SearchBox />
-        <img src={picture} alt={title} />
-        <h2>Descripción del producto</h2>
-        <p>{description}</p>
-        <h1>{title}</h1>
-        <span>{condition}</span>
-        { soldQuantity ? <span>{`${soldQuantity} vendidos`}</span> : '' }
-        <span>{ currencySymbols.get(price.currency) }</span>
-        <span>{ price.amount }</span>
-        <button type="button">Comprar</button>
-      </div>
+        <div className={styles.ProductDetail}>
+          <div className={styles.overlay}>
+            <div className={styles.left}>
+              <img src={picture} alt={title} />
+              <h2>Descripción del producto</h2>
+              <p className={styles.description}>{description}</p>
+            </div>
+            <div className={styles.right}>
+              { condition === 'new' ? <span className={styles.condition}>Nuevo</span> : <span className={styles.condition}>Usado</span> }
+              { soldQuantity ? <span className={styles.sold}>{` - ${soldQuantity} vendidos`}</span> : '' }
+              <h1>{title}</h1>
+              <span className={styles.currency}>{ currencySymbols.get(price.currency) }</span>
+              <span className={styles.amount}>{ price.amount }</span>
+              <span className={styles.decimals}>{ price.decimals }</span>
+              <button className={styles.buy} type="button">Comprar</button>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
