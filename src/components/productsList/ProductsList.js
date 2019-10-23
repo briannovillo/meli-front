@@ -8,13 +8,13 @@ export default class ProductsList extends Component {
     const { products } = this.props;
 
     return (
-      <ol className={styles.ProductsList}>
+      <ul className={styles.ProductsList}>
         {
           products.map(
             product => <ProductsListItem key={product.id} {...product} />
           )
         }
-      </ol>
+      </ul>
     );
   }
 }

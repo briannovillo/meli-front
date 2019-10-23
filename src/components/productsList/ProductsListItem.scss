@@ -1,14 +1,49 @@
-.ProductsList {
-  .product {
-    .price {
-      .currency {
-        .symbol {
-        
-        }
-        .fraction {
-          
-        }
-      }
+.product {
+  img {
+    width: 130px;
+    height: 130px;
+  }
+  .price {
+    padding-left: 10px;
+    text-decoration: none;
+    color: black;
+    .currency {
+      font-size: 25px;
+      padding-right: 5px;
     }
+    .amount {
+      font-size: 25px;
+    }
+  }
+  .title {
+    width: 80%;
+    padding-left: 10px;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    a {
+      font-size: 20px;
+      color: black;
+      text-decoration: none;
+    }
+  }
+  .image {
+    float: left;
+    clear: both;
+  }
+  .info {
+    float: left;
+    width: 82%;
+    height: 118px;
+    padding-top: 12px;
+    background-color: white;
+  }
+  .free {
+    color: green;
+    font-weight: bold;
+    padding-left: 10px;
   }
 }

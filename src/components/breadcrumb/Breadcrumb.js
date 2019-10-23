@@ -6,9 +6,9 @@ export default class Breadcrumb extends Component {
   render() {
     const { paths } = this.props;
     return (
-      <ol className={styles.Breadcrumb}>
+      <ul className={styles.Breadcrumb}>
         { paths.map(path => <li key={path} className={styles.Breadcrumb.li}>{path}</li>) }
-      </ol>
+      </ul>
     );
   }
 }

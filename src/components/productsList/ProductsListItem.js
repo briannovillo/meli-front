@@ -13,31 +13,35 @@ export default class ProductsListItem extends Component {
       id,
       price,
       title,
-      description,
-      picture
+      picture,
+      free_shipping: freeShipping
     } = this.props;
 
     const detailLink = `/items/${id}`;
 
     return (
       <li className={styles.product}>
-        <a href={detailLink}>
-          <img src={picture} alt={title} />
-        </a>
-        <a href={detailLink}>
-          <span className={styles.symbol}>
-            { currencySymbols.get(price.currency) }
-          </span>
-          <span className={styles.fraction}>
-            { price.amount }
-          </span>
-        </a>
-        <a href={detailLink}>
+        <div className={styles.image}>
+          <a href={detailLink}>
+            <img src={picture} alt={title} />
+          </a>
+        </div>
+        <div className={styles.info}>
+          <a className={styles.price} href={detailLink}>
+            <span className={styles.currency}>
+              { currencySymbols.get(price.currency) }
+            </span>
+            <span className={styles.amount}>
+              { price.amount }
+            </span>
+          </a>
           <h2 className={styles.title}>
-            {title}
+            <a href={detailLink}>
+              {title}
+            </a>
           </h2>
-        </a>
-        <p>{description}</p>
+          { freeShipping ? <span className={styles.free}>Envío gratis</span> : '' }
+        </div>
       </li>
     );
   }
@@ -53,11 +57,10 @@ ProductsListItem.propTypes = {
     }
   ).isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  picture: PropTypes.string
+  picture: PropTypes.string,
+  free_shipping: PropTypes.bool.isRequired
 };
 
 ProductsListItem.defaultProps = {
-  description: '',
   picture: ''
 };
