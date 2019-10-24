@@ -1,126 +1,57 @@
-# Frontend for Mercadolibre
+# Frontend Mercadolibre
 
-### Cosas que se tuvieron en cuenta al hacer este esta app
+Url productiva: http://ec2-18-208-149-131.compute-1.amazonaws.com:3000/items?search=ipad \
 
-1. SSR: Es escencial para el SEO ya que los buscadores recién se estan adaptando a crawlear sitios con render solo en el cliente y no es del todo fiable.
-2. Hot reloading en dev para que se vea al instante el cambio de un archivo, ya que agiliza mucho el desarrollo.
-3. Minificado de html cuando se buildea en prod.
-4. Mobile first.
-5. CSS critico above the fold.
+### Esta es la app de front para la [REST API](https://github.com/briannovillo/meli-api/)
 
-### Este repo se creo en base a este boilerplate https://github.com/william-woodhead/simple-universal-react-redux ya que al tener visibilidad de varias personas en la comunidad esta mas depurado que uno que creemos nosotros mismos y si ocurre algun error en el futuro posiblemente este reportado alli tambien. Solo hay que tener en cuenta que aqui se actualizaron todas las librerias a la ultima version stable.
+#### Cosas que se tuvieron en cuenta al hacer esta app (y algunas que me hubiera gustado implementar pero quedaron en el tintero por falta de tiempo)
 
-### These are the technologies it uses:
+- [x] La app es universal/isomórfica, es decir tiene Server Side rendering, que es escencial para el SEO ya que los buscadores recién se estan adaptando a crawlear sitios con render solo en el cliente y no es del todo fiable, además de que no funcionarían los previews de metadata cuando compartimos la url en una red social.
+- [x] Hot reloading en dev para que se vea al instante el cambio de un archivo, ya que agiliza mucho el desarrollo.
+- [x] Minificado de html cuando se buildea en prod.
+- [x] Classes css ofuscadas para reducir el tiempo de parseo del dom, y el tamaño de los css.
+- [x] Se utilizó Redux como manejador de estado de la aplicación
+- [x] Se agregó ESLint para estandarizar el estilo del código.
+- [ ] Agregar tests con Jest/Enzyme
+- [ ] Encarar el maquetado de html y css de forma Mobile first.
+- [ ] Poner el CSS critico al principio para la carga Above the fold.
 
-#### For the app
+> Este repo se creo en base a [este boilerplate](https://github.com/william-woodhead/simple-universal-react-redux) ya que al tener visibilidad de varias personas en la comunidad esta mas depurado que uno que creemos nosotros mismos y si ocurre algun error en el futuro posiblemente este reportado alli tambien. Solo hay que tener en cuenta que aqui se actualizaron todas las librerias a la ultima version stable y se cambió thunk por Saga que permite manejar mejor flujos complejos de estado.
 
-- [React](https://reactjs.org/)
-- [Redux](https://redux.js.org/)
-- [React-router](https://reacttraining.com/react-router/web)
-- [Express](http://expressjs.com/)
-- [Yarn](https://yarnpkg.com/lang/en/)
+#### Para iniciar el proyecto en un entorno local
 
-#### Build tools
-
-- [Babel for ES6 Javascript](https://babeljs.io/)
-- [Webpack 4](https://webpack.js.org/)
-- [Sass](http://sass-lang.com/)
-- [Nodemon](https://nodemon.io/)
-- [ESlint](https://eslint.org/)
-
-## Commands
-
-###### Install
-
-```bash
+1. Clonar repositorio e instalar dependencias
+```
+git clone https://github.com/briannovillo/meli-front.git
 npm install
 ```
 
-###### Run in development
-
-```bash
-npm run dev
+2. Correr el server con hot reloading (En este modo los estilos se cargan del scss directamente, por eso se ve un parpadeo durante un segundo) 
+```
+npm run start:dev
 ```
 
-Open [localhost:3000](http://localhost:3000)
-
-###### Make build
-
-```bash
-npm run build
+O en modo producción (con css y js buildeados)
+```
+npm run start:prod
 ```
 
-###### Run in production
+#### Otra documentación útil extraída del boilerplate sobre como es el flujo de Server Side Rendering.
 
-```bash
-npm run start
+* Todo empieza con la creación del server de Express dentro de *src/server/index.js*
+
+Aquí se puede ver que todos los requests son enviados a la función handleRender():
 ```
-
-Open [localhost:3000](http://localhost:3000)
-
-## Documentation
-
-#### Server side
-
-Everything starts with the Express App.
-You can find this in `src/server/index.js`
-
-Here we can see that all requests are routed to the `handleRender` function:
-
-```javascript
 app.use(handleRender);
 ```
 
-**The handleRender function does a number of things:**
+La función handleRender hace varias cosas:
 
-1. Create a new redux store on every request from the client
-1. Match the request path (`req.path`) to the react router routes specified in `src/universal/routes`
-1. Asynchronously fetch the data required to render this route (using the route's `loadData` function)
-1. Use react-dom/server `renderToString` function to create the required html
-1. Insert the html and redux preloadedState into a full html page using the `renderFullPage` function
-1. Send the response to the client `res.send(`
+1. Crea un store de redux para cada request
+2. Matchea la ruta de req.path con las rutas especificadas en el router de la app (en el archivo src/universal/routes.js)
+3. Ejecuta la función loadData() si es que esa ruta tiene una declarada para obtener los datos necesarios para el render.
+4. Genera el html con la función renderToString() de react-dom/server
+5. Llama a la función renderFullPage() para unir el html y el state de Redux
+6. Envía la respuesta al cliente con res.send()
 
-#### Client side
-
-For the client side the index file is `src/client/index.js`
-
-In this file, we use the redux `preloadedState` provided by the server to initialise a client side redux store.
-
-We then use the React `hydrate` function to initialise React on the client side.
-
-In the React components, any asynchronous data is fetched in `componentDidMount`. If data already exists, the component will not make the fetch.
-
-```javascript
-componentDidMount() {
-  // only fetch the data if there is no data
-  if (!this.props.data) this.props.getData();
-}
-```
-
-In this way, components won't make requests for data if the data has already been requested server side.
-
-#### React Router
-
-The difference in the react tree between server side and client side is as follows:
-
-**Server** `src/server/handleRender.js`
-
-```jsx
-<Provider store={store}>
-  <StaticRouter location={req.url} context={{}}>
-    <Router />
-  </StaticRouter>
-</Provider>
-```
-
-**Client** `src/client/index.js`
-
-```jsx
-<Provider store={store}>
-  <BrowserRouter>
-    <Router />
-  </BrowserRouter>
-</Provider>
-```
-
-Everything else in the entire React tree is the same between server and client.
+Por último en el cliente que está dentro del archivo *src/client/index.js* se crea un store de Redux para el cliente basado en el state que nos dió el server y se usa la función Hydrate() para actualizar los componentes de React.
