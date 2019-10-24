@@ -1,17 +1,17 @@
 # Frontend Mercadolibre
 
-Url productiva: http://ec2-18-208-149-131.compute-1.amazonaws.com:3000/items?search=ipad \
+Url productiva: http://ec2-18-208-149-131.compute-1.amazonaws.com:3000/items?search=ipad
 
 ### Esta es la app de front para la [REST API](https://github.com/briannovillo/meli-api/)
 
 #### Cosas que se tuvieron en cuenta al hacer esta app (y algunas que me hubiera gustado implementar pero quedaron en el tintero por falta de tiempo)
 
-- [x] La app es universal/isomórfica, es decir tiene Server Side rendering, que es escencial para el SEO ya que los buscadores recién se estan adaptando a crawlear sitios con render solo en el cliente y no es del todo fiable, además de que no funcionarían los previews de metadata cuando compartimos la url en una red social.
-- [x] Hot reloading en dev para que se vea al instante el cambio de un archivo, ya que agiliza mucho el desarrollo.
-- [x] Minificado de html cuando se buildea en prod.
-- [x] Classes css ofuscadas para reducir el tiempo de parseo del dom, y el tamaño de los css.
-- [x] Se utilizó Redux como manejador de estado de la aplicación
-- [x] Se agregó ESLint para estandarizar el estilo del código.
+- [x] La app es universal/isomórfica, es decir tiene *Server Side rendering*, que es escencial para el SEO ya que los buscadores recién se estan adaptando a crawlear sitios con render solo en el cliente y no es del todo fiable, además de que no funcionarían los previews de metadata cuando compartimos la url en una red social.
+- [x] *Hot reloading* en dev para que se vea al instante el cambio de un archivo, ya que agiliza mucho el desarrollo.
+- [x] *Minificado de html* cuando se buildea en prod.
+- [x] *Classes css ofuscadas* para reducir el tiempo de parseo del dom, y el tamaño de los css.
+- [x] Se utilizó *Redux* como manejador de estado de la aplicación
+- [x] Se agregó *ESLint* para estandarizar el estilo del código.
 - [ ] Agregar tests con Jest/Enzyme
 - [ ] Encarar el maquetado de html y css de forma Mobile first.
 - [ ] Poner el CSS critico al principio para la carga Above the fold.
