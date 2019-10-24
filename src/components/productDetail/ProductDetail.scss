@@ -2,8 +2,8 @@
   width: 80%;
   margin: auto;
   img {
-    width: 430px;
-    height: 370px;
+    width: 100%;
+    height: auto;
     padding-top: 18px;
   }
   h1 {
@@ -54,6 +54,10 @@
 }
 .amount {
   font-size: 35px;
+}
+.decimals {
+  vertical-align: top;
+  font-size: 24px;
 }
 .buy {
   display: block;

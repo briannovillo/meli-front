@@ -34,6 +34,7 @@ export default class ProductsListItem extends Component {
             <span className={styles.amount}>
               { price.amount }
             </span>
+            { price.decimals ? <span className={styles.decimals}>{ price.decimals }</span> : null }
           </a>
           <h2 className={styles.title}>
             <a href={detailLink}>

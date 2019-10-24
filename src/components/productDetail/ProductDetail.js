@@ -35,10 +35,11 @@ export default class ProductDetail extends Component {
             </div>
             <div className={styles.right}>
               { condition === 'new' ? <span className={styles.condition}>Nuevo</span> : <span className={styles.condition}>Usado</span> }
-              { soldQuantity ? <span className={styles.sold}>{` - ${soldQuantity} vendidos`}</span> : '' }
+              { soldQuantity ? <span className={styles.sold}>{` - ${soldQuantity} vendidos`}</span> : null }
               <h1>{title}</h1>
               <span className={styles.currency}>{ currencySymbols.get(price.currency) }</span>
-              <span className={styles.amount}>{ price.amount.toFixed(2) }</span>
+              <span className={styles.amount}>{ price.amount }</span>
+              { price.decimals ? <span className={styles.decimals}>{ price.decimals }</span> : null }
               <button className={styles.buy} type="button">Comprar</button>
             </div>
           </div>
