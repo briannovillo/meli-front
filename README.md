@@ -13,6 +13,7 @@ Url productiva: http://ec2-18-208-149-131.compute-1.amazonaws.com:3000/items?sea
 - [x] Se utilizó *Redux* como manejador de estado de la aplicación
 - [x] Se agregó *ESLint* para estandarizar el estilo del código.
 - [ ] Agregar tests con Jest/Enzyme
+- [ ] Hacer navegación interna de React con componentes Link en lugar de con tags <a> para aprovechar mejor los dispatch de Saga
 - [ ] Encarar el maquetado de html y css de forma Mobile first.
 - [ ] Poner el CSS critico al principio para la carga Above the fold.
 
@@ -133,6 +134,6 @@ meli-front
 │   └── universal
 │       ├── createReduxStore.js --> Crea el Store de redux que comparten el server y el cliente
 │       └── routes.js --> Rutas de Express
-├── webpack.config.dev.js
-└── webpack.config.prod.js
+├── webpack.config.dev.js --> Configuración de Webpack para dev
+└── webpack.config.prod.js --> Configuración de Webpack para prod
 ```
