@@ -55,3 +55,84 @@ La función handleRender hace varias cosas:
 6. Envía la respuesta al cliente con res.send()
 
 Por último en el cliente que está dentro del archivo *src/client/index.js* se crea un store de Redux para el cliente basado en el state que nos dió el server y se usa la función Hydrate() para actualizar los componentes de React.
+
+#### Estructura del proyecto
+
+```
+meli-front
+├── dist --> Archivos compilados de la app con babel y webpack
+├── loaders --> Loaders de babel
+│   ├── sass-loader.js --> Loaders necesarios para parsear archivos scss
+│   └── scope-name.js --> Se llama en .babelrc para crear clases css ofuscadas
+├── package.json --> Lista las dependencias y comandos disponibles de npm
+├── package-lock.json --> Versiones estatificadas de las dependencias npm
+├── README.md --> Info del proyecto
+├── src
+│   ├── client
+│   │   └── index.js -> Crea el store de Redux para el cliente en base al state que vino del servidor
+│   ├── components --> Componentes de React con sus estilos
+│   │   ├── app
+│   │   │   ├── App.js
+│   │   │   ├── App.scss
+│   │   │   └── index.js
+│   │   ├── breadcrumb
+│   │   │   ├── Breadcrumb.js
+│   │   │   ├── Breadcrumb.scss
+│   │   │   └── index.js
+│   │   ├── notFound
+│   │   │   ├── index.js
+│   │   │   ├── NotFoundIcon.js
+│   │   │   ├── NotFound.js
+│   │   │   └── NotFound.scss
+│   │   ├── productDetail
+│   │   │   ├── index.js
+│   │   │   ├── ProductDetail.js
+│   │   │   └── ProductDetail.scss
+│   │   ├── productsList
+│   │   │   ├── index.js
+│   │   │   ├── ProductsListItem.js
+│   │   │   ├── ProductsListItem.scss
+│   │   │   ├── ProductsList.js
+│   │   │   └── ProductsList.scss
+│   │   ├── searchBox
+│   │   │   ├── index.js
+│   │   │   ├── SearchBox.js
+│   │   │   ├── SearchBox.scss
+│   │   │   ├── SearchButton.js
+│   │   │   └── SearchButton.scss
+│   │   └── searchResults
+│   │       ├── index.js
+│   │       ├── SearchResults.js
+│   │       └── SearchResults.scss
+│   ├── config
+│   │   └── default.json --> Configuraciones por defecto
+│   ├── containers --> Containers que conectan los componentes a Redux
+│   │   ├── App.js
+│   │   ├── BreadCrumb.js
+│   │   ├── NotFound.js
+│   │   ├── ProductDetail.js
+│   │   ├── SearchBox.js
+│   │   └── SearchResults.js
+│   ├── redux
+│   │   ├── reducers --> Reducers que modifican el store de Redux en base a acciones
+│   │   │   ├── index.js
+│   │   │   └── modules
+│   │   │       └── product.js
+│   │   ├── sagas --> Crea acciones saga para que sean escuchadas por los reducers
+│   │   │   ├── index.js
+│   │   │   └── modules
+│   │   │       └── product.js
+│   │   └── services
+│   │       ├── Api.js --> Clase generica de Api Isomorfica para que la puedan usar tanto el server como el cliente para hacer requests
+│   │       └── modules
+│   │           └── product.js --> Hace los fetch de productos
+│   ├── server --> Instanciacion del server
+│   │   ├── handleRender.js --> Devuelve el primer render del server
+│   │   ├── index.js --> Inicia el server de Express
+│   │   └── renderFullPage.js --> Genera html con el store de Redux incluido en el dom para el cliente
+│   └── universal
+│       ├── createReduxStore.js --> Crea el Store de redux que comparten el server y el cliente
+│       └── routes.js --> Rutas de Express
+├── webpack.config.dev.js
+└── webpack.config.prod.js
+```
